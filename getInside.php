@@ -6,12 +6,7 @@ session_start();
 <html>
 <body>
 <?php
-$serverName = "localhost";
-$dbUser = "root";
-$dbPass = "";
-$dbName = "giftedblog";
-
-$conn = new mysqli( $serverName, $dbUser, $dbPass, $dbName );
+include "dbConn.php";
 
 $mailingAddr = $_POST['email_addr'];
 $passes = $_POST["passPhrase"];
@@ -20,7 +15,7 @@ $passes = $_POST["passPhrase"];
 $sql = "SELECT * FROM users WHERE email_addr='" . $mailingAddr . "' LIMIT 1";
 
 if ( $conn->connect_error ) {
-	die("Error " . $sql . " " . $conn->connect_error);
+	die(  "Error " . $sql . " " . $conn->connect_error );
 	
 } 
 $result = $conn->query( $sql );
