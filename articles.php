@@ -60,8 +60,8 @@
           <p>Welcome to the blog of <span class="w3-tag">Gifted</span></p>
           <div><a href="create-article.php"><i class="fas fa-plus fa-lg"></i></a></div>
         </header>
-        <div class="main-content">
-          <table>
+        <div class="w3-container w3-light-grey">
+          <table class="w3-table w3-striped w3-bordered w3-hoverable">
             <thead>
               <tr>
                 <th>Title</th>

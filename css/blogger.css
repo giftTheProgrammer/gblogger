@@ -159,7 +159,7 @@ aside ul li {
 
 .main-view {
 	width: 100%;
-	height: 100%;
+	height: auto;
 	display: flex;
 	flex-direction: column;
 }
@@ -170,6 +170,12 @@ aside ul li {
 	height: 35rem;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
+}
+
+.main-display {
+	background-color: #555;
+	width: 100%;
+	height: 35rem;
 }
 
 .main-stat {
