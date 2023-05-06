@@ -15,7 +15,7 @@ if ( $conn->connect_error ){
 if( isset($_SESSION['pro_id']) ){
   $proId = $_SESSION['pro_id'];
   echo "This is the profile ID: " . $proId;
-  echo "\n";
+  echo "<br />";
   $article_heading = $_POST['title'];
   $article_body = $_POST['article-content'];
 
@@ -26,7 +26,7 @@ if( isset($_SESSION['pro_id']) ){
     header("Location: create-article.php");
     exit();
   } else {
-    echo $conn->error;
+    echo "<br />Error:" . $sql . "<br />" . $conn->error;
     // header("Location: create-article.php?error=Record not created successfully!");
     exit();
   }
