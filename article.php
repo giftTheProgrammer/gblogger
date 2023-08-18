@@ -20,7 +20,7 @@
   body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </style>
 </head>
-<body class="w3-light-grey">
+<body>
 <div id="dashboard-layout">
     <aside id="side-nav">
       <ul>
@@ -69,17 +69,10 @@
           <div><a href="create-article.php"><i class="fas fa-plus fa-lg" style="color: green;"></i></a></div>
         </header>
         <div class="w3-container w3-light-grey">
-          <table class="w3-table w3-striped w3-bordered w3-hoverable">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Body</th>
-              </tr>
-            </thead>
-            <tbody>
+          
               <?php
                 include "dbConn.php";
-                $sql = "SELECT * FROM articles";
+                $sql = "SELECT * FROM articles WHERE articleId=" . $_GET['id'];
 
                 if( $conn->connect_error ){
                   die( "Error: " . $sql . " ==> " . $conn->connect_error );
@@ -87,21 +80,18 @@
                 $result = $conn->query( $sql );
 
                 if ( $result->num_rows > 0 ) {
-                  while( $row = $result->fetch_assoc() ){
-                    echo "<a href=\"article.php?id=". $row["articleId"] . "\">";
-                    echo "<tr>";
-                    echo "<td>" . $row["title"] . "</td>";
-                    echo "<td>" . $row["body"] . "</td>";
-                    echo "</tr>";
-                    echo "</a>";
-                  }
+                  $row = $result->fetch_assoc();
+                    
+                  echo "<h1>" . $row["title"] . "</h1>";
+                  echo "<p>" . $row["body"] . "</p>";
+                  
+                  echo "<form action=\"makeComment.php\" method=\"POST\"><input type=\"text\" name=\"comment\" placeholder=\"Write your comment here\" /><input type=\"submit\" value=\"POST COMMENT\" /></form>";
                 }else {
                     echo "<tr>There are no articles just yet. Create one</tr>";
                   }
               ?>
               
-            </tbody>
-          </table>
+            
         </div>
         
       </div>
