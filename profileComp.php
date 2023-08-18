@@ -94,6 +94,34 @@ if ( $_POST['occupation'] ) {
 		    	"','".$_POST['sex']."','".$_POST['occupation']."','".$pro_pic."')";
 
     if ( $conn->query($sql) === TRUE ) {
+    	$conn->close();
+
+    	$conn2 = new mysqli( $serverName, $dbUser, $dbPass, $dbName );
+
+    	// Check connection
+    	if ($conn2 -> connect_errno) {
+		  echo "Failed to connect to MySQL: " . $conn2 -> connect_error;
+		  exit();
+		}
+		
+    	$sql2 = "SELECT * FROM profiles WHERE user_id=" . $_SESSION['uId'] . " LIMIT 1";
+		$result2 = $conn2->query( $sql2 );
+		$row2 = $result2->fetch_assoc();
+    	$_SESSION['pro_id'] = $row2['profileId'];
+		$_SESSION['lastName'] = $row2['last_name'];
+		$_SESSION['firstName'] = $row2['first_name'];
+		$_SESSION['gender'] = $row2['sex'];
+		$_SESSION['occupation'] = $row2['occupation'];
+		$_SESSION['pro_pic'] = $row2['profile_pic'];
+
+		echo "ProfileId = " . $_SESSION['pro_id'];
+		echo "Last Name = " . $_SESSION['lastName'];
+		echo "First Name = " . $_SESSION['firstName'];
+		echo "Gender = " . $_SESSION['gender'];
+		echo "Occupation = " . $_SESSION['occupation'];
+		echo "Profile Picture = " . $_SESSION['pro_pic'];
+		
+		$conn2->close();
 		header("Location: my-profile.php");
 		exit();
 	} else {

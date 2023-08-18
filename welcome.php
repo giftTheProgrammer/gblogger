@@ -28,7 +28,8 @@ if ( !$_SESSION['uEmail'] ) {
 					<div id="right-nav">
 						<div class="profile-frame">
 							<?php
-							if($_SESSION['pro_pic'] != "no_image_yet.jpg"){
+
+							if( isset( $_SESSION['pro_pic'] ) && $_SESSION['pro_pic'] != "no_image_yet.jpg"){
 								echo "<img src=photos/" . $_SESSION['pro_pic'] . " width='48' height='48' />";
 							}else{
 								echo "<img src='photos/no_image_yet.jpg' width='48' height='48' />";
