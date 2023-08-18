@@ -11,6 +11,7 @@ if ( !$_SESSION['uEmail'] ) {
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" type="text/css" href="css/blogger.css" />
+	<link rel="stylesheet" type="text/css" href="fontawesome-free-5.15.4-web/css/all.css" />
 	<title>G Blogger</title>
 </head>
 <body>
@@ -56,7 +57,14 @@ if ( !$_SESSION['uEmail'] ) {
 			
 			<div class="main-view">
 				<div class="directory-header">
-					<h2>This is your dashboard.</h2>
+					<div class="header-content">
+						<h2 style="display: inline-block;">This is your dashboard.</h2>
+					</div>
+					<div class="header-content" id="add-new">
+						<a href="create-article.php">
+							<i class="fas fa-plus fa-lg" style="color: green;"></i>
+						</a>
+					</div>
 				</div>
 				<div class="main-content">
 					<div class="main-stat"></div>
