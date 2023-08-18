@@ -66,7 +66,7 @@
         <header class="w3-container w3-center w3-padding-32"> 
           <h1><b>MY BLOG</b></h1>
           <p>Welcome to the blog of <span class="w3-tag">Gifted</span></p>
-          <div><a href="create-article.php"><i class="fas fa-plus fa-lg"></i></a></div>
+          <div><a href="create-article.php"><i class="fas fa-plus fa-lg" style="color: green;"></i></a></div>
         </header>
         <div class="w3-container w3-light-grey">
           <table class="w3-table w3-striped w3-bordered w3-hoverable">
