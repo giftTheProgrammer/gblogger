@@ -89,9 +89,21 @@
                     <input type="text" name="comment" placeholder="Write your comment here" />
                     <input type="submit" value="POST COMMENT" />
                   </form>
-                <?php }else {
-                    echo "<tr>There are no articles just yet. Create one</tr>";
+
+
+                <?php
+                  $sql2 = "SELECT * FROM comments WHERE userId=" . $_SESSION['uId'] . " AND articleId=" . $_GET['id'];
+                  $result2 = $conn->query( $sql2 );
+                  if ( $result2->num_rows > 0 ) {
+                    while($row2=$result2->fetch_assoc()){
+                  ?>
+                  <p><?= $row2['comment'] ?></p>
+                  <?php
+                    }
                   }
+                  
+
+                }
               ?>
               
             
