@@ -84,9 +84,12 @@
                     
                   echo "<h1>" . $row["title"] . "</h1>";
                   echo "<p>" . $row["body"] . "</p>";
-                  
-                  echo "<form action=\"makeComment.php\" method=\"POST\"><input type=\"text\" name=\"comment\" placeholder=\"Write your comment here\" /><input type=\"submit\" value=\"POST COMMENT\" /></form>";
-                }else {
+                  ?>
+                  <form action="makeComment.php?articleId=<?= $_GET['id'] ?>" method="POST">
+                    <input type="text" name="comment" placeholder="Write your comment here" />
+                    <input type="submit" value="POST COMMENT" />
+                  </form>
+                <?php }else {
                     echo "<tr>There are no articles just yet. Create one</tr>";
                   }
               ?>

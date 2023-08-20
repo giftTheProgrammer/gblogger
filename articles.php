@@ -85,16 +85,25 @@
                   die( "Error: " . $sql . " ==> " . $conn->connect_error );
                 }
                 $result = $conn->query( $sql );
-
+                $conn->close();
                 if ( $result->num_rows > 0 ) {
-                  while( $row = $result->fetch_assoc() ){
-                    echo "<a href=\"article.php?id=". $row["articleId"] . "\">";
-                    echo "<tr>";
-                    echo "<td>" . $row["title"] . "</td>";
-                    echo "<td>" . $row["body"] . "</td>";
-                    echo "</tr>";
-                    echo "</a>";
-                  }
+                  while( $row = $result->fetch_assoc() ){ ?>
+                    
+                      <tr>
+                        <td>
+                          <a href="article.php?id=<?= $row["articleId"] ?>">
+                            <?php echo $row["title"] ?>
+                          </a>
+                        </td>
+                        <td>
+                          <a href="article.php?id=<?= $row["articleId"] ?>">
+                            <?php echo $row["body"] ?>
+                          </a>
+                        </td>
+                      </tr>
+                    
+                    
+               <?php   }
                 }else {
                     echo "<tr>There are no articles just yet. Create one</tr>";
                   }
